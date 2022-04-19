@@ -1,0 +1,29 @@
+{
+    "name": "ontob/qrpayment",
+    "description": "QR payments code library",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Ondrej Tobiska",
+            "email": "tobiska@gmail.com"
+        }
+    ],
+    "require": {
+        "php" : "^7.1",
+        "endroid/qr-code": "2.5.0"
+    },
+    "require-dev": {
+        "php" : "^7.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Ontob\\QrPayment\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Ontob\\QrPayment\\": "src"
+        }
+    }
+}
