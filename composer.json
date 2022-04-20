@@ -9,6 +9,7 @@
             "email": "tobiska@gmail.com"
         }
     ],
+    "minimum-stability": "dev",
     "require": {
         "php" : "^7.1",
         "endroid/qr-code": "2.5.0"
