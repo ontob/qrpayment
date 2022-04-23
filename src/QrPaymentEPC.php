@@ -83,7 +83,7 @@ class QrPaymentEPC
     /**
      * The amount of the payment
      * Max 12 characters
-     * @var string
+     * @var float
      */
     private $amount;
 
@@ -239,7 +239,7 @@ class QrPaymentEPC
     public function getAmount()
     {
         return $this->amount > 0 ?
-           strtoupper($this->currency) .  rtrim(number_format($this->amount, 2, '.', ''), '0') : '';
+           strtoupper($this->currency) .  number_format($this->amount, 2, '.', '') : '';
     }
 
     public function setPurpose($purpose)
