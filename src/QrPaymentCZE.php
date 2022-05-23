@@ -15,8 +15,11 @@
 
 namespace Ontob\QrPayment;
 
-use Endroid\QrCode\ErrorCorrectionLevel;
+use Endroid\QrCode\Color\Color;
+use Endroid\QrCode\Encoding\Encoding;
+use Endroid\QrCode\ErrorCorrectionLevel\ErrorCorrectionLevelMedium;
 use Endroid\QrCode\QrCode;
+use Endroid\QrCode\Writer\PngWriter;
 use Ontob\QrPayment\Traits\UtilitiesTrait;
 
 class QrPaymentCZE
@@ -486,13 +489,14 @@ class QrPaymentCZE
 
     public function qrImage()
     {
-        $qrCode = new QrCode();
-        $qrCode->setText($this->getQrString())
-            ->setEncoding('UTF-8')
+        $writer = new PngWriter();
+        $qrCode = QrCode::create($this->getQrString())
+            ->setEncoding(new Encoding('UTF-8'))
             ->setSize(300)
-            ->setErrorCorrectionLevel(ErrorCorrectionLevel::MEDIUM)
-            ->setForegroundColor(['r' => 0, 'g' => 0, 'b' => 0])
-            ->setBackgroundColor(['r' => 255, 'g' => 255, 'b' => 255]);
-        return $qrCode;
+            ->setErrorCorrectionLevel(new ErrorCorrectionLevelMedium)
+            ->setForegroundColor(new Color(0, 0, 0))
+            ->setBackgroundColor(new Color(255, 255, 255));
+
+        return $result = $writer->write($qrCode);
     }
 }
